@@ -25,7 +25,7 @@ $(function () {
     if (!email || !app.validEmail(email)) {
       return;
     }
-    app.proxy('POST', '/auth/email-login', {email: email}, {}, loginSuccess, loginError);
+    app.proxy('POST', '/auth/email-login', {email: email}, loginSuccess, loginError);
   });
   
   var loginError = function (error) {
@@ -42,13 +42,10 @@ $(function () {
       name: $('input.summoner').val().trim().toLowerCase(),
       region: $('select').val()
     };
-    if (!data.name || !data.region) {
-      return;
-    }
-    var headers = {
-      'Authorization': 'Bearer ' + app.user.token
-    };
-    app.proxy('POST', '/riot/summoner/by-name', data, headers, summonerSaved, errorSavingSummoner);
+    // if (!data.name || !data.region) {
+    //   return;
+    // }
+    app.proxy('POST', '/riot/summoner/by-name', data, summonerSaved, errorSavingSummoner);
   };
 
   var errorSavingSummoner = function (error) {
@@ -56,7 +53,9 @@ $(function () {
   };
 
   var summonerSaved = function (summoner) {
-    console.log('Summoner', summoner);
-  }
+    app.user.summoner = summoner;
+    $('#app-container').html('');
+    app.loadQuestionnaire();
+  };
 
 });

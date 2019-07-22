@@ -2,7 +2,13 @@
 var app = {};
 var HOST = 'http://localhost:8080';
 
-app.proxy = function (type, url, data, headers, onSuccess, onError) {
+app.proxy = function (type, url, data, onSuccess, onError) {
+  var headers = {};
+  if (app.user && app.user.token) {
+    headers = {
+      'Authorization': 'Bearer ' + app.user.token
+    };
+  }
   $.ajax({
     type: type,
     url: HOST + url,
