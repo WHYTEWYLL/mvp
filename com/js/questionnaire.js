@@ -74,7 +74,7 @@ $(function () {
 
   var answerCreated = function (answer) {
     answers.push(answer);
-    if (position <= 100) {
+    if (position >= 100) {
       return finished();
     }
     setTimeout(function () {
