@@ -1,0 +1,204 @@
+
+
+	body {margin:0; background:#FFF url(../img/body.png); -webkit-text-size-adjust:100%; -moz-text-size-adjust:100%; padding:10px 2%; font:14px/24px 'Open Sans', Helvetica, Arial, sans-serif  ; color:#000;}	
+
+	
+    h2, h1{ font:300 22px/30px 'Open Sans', sans-serif;  margin:0 0 10px 0; padding:0}
+    h1{ font-size:30px; line-height:40px; }
+	h2 span{color:#0088cc;}
+	.classname { display:block;  padding:20px;  border:solid 2px #CCC; text-align:center;}
+    
+		hr{ padding:0; margin:50px 0; height:1px; border:0; background:rgba(0,0,0,.2); box-shadow:0 1px 0 rgba(255,255,255, 0.8)  }
+		
+		body {
+			overflow: hidden;
+			width: 100%;
+			height: 100%;
+			padding: 0;
+			margin: 0;
+		}
+		/* Slider wrapper*/
+		.css-slider-wrapper {
+			display: block;
+			background: #FFF;
+			overflow: hidden;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+		}
+		/* Slider */
+		.slider {
+			width: 100%;
+			height: 100%;
+			background: red;
+			position: absolute;
+			left: 0;
+			top: 0;
+			opacity: 1;
+			z-index: 0;
+			display: flex;
+			display: -webkit-flex;
+			display: -ms-flexbox;
+			flex-direction: row;
+			flex-wrap: wrap;
+			-webkit-flex-align: center;
+			-webkit-align-items: center;
+			align-items: center;
+			justify-content: center;
+			align-content: center;
+			-webkit-transition: -webkit-transform 1000ms;
+			transition: -webkit-transform 1000ms, transform 1000ms;
+			-webkit-transform: scale(1);
+			transform: scale(1);
+		}
+		/* each slide backgound color */  
+		.slider {
+			background: #232323;
+			left: 0;
+		}
+		.slider > div {
+			text-align: center;
+		}
+		/* Slider inner slide effect */
+		.slider h2 {
+			color: #FFF;
+			font-weight: 900;
+			text-transform: uppercase;
+			font-size: 45px;
+			line-height: 120%;
+			opacity: 0;
+			-webkit-transform: translateX(500px);
+			transform: translateX(500px);
+		}
+		.slider .button {
+			color: #FFF;
+			padding: 5px 30px;
+			background: rgba(255,255,255,0.3);
+			text-decoration: none;
+			opacity: 0;
+			font-size: 15px;
+			line-height: 30px;
+			display: inline-block;
+			-webkit-transform: translateX(-500px);
+			transform: translateX(-500px);
+		}
+		/* Next and Preive arrow */ 
+		.control {
+			position: absolute;
+			top: 50%;
+			width: 50px;
+			height: 50px;
+			margin-top: -25px;
+			z-index: 55;
+		}
+		.control label {
+			z-index: 0;
+			display: none;
+			text-align: center;
+			line-height: 50px;
+			font-size: 50px;
+			color: #FFF;
+			cursor: pointer;
+			opacity: 0.2;
+		}
+		.control label:hover {
+			opacity: 0.5;
+		}
+		.next {
+			right: 1%;
+		}
+		.previous {
+			left: 1%;
+		}
+		/* Slider Pagger */ 
+		.slider-pagination {
+			position: absolute;
+			bottom: 20px;
+			width: 100%;
+			left: 0;
+			text-align: center;
+			z-index: 1000;
+		}
+		.slider-pagination label {
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			display: inline-block;
+			background: rgba(255,255,255,0.2);
+			margin: 0 2px;
+			border: solid 1px rgba(255,255,255,0.4);
+			cursor: pointer;
+		}
+		/* Slider Pagger arrow event */
+		.slide-radio:checked ~ .next .numb, 
+		.slide-radio:checked ~ .previous .numb {
+			display: block;
+			z-index: 1
+		}
+		/* Slider slide effect */
+		.slide-radio:checked ~ .slider {
+			-webkit-transform: translateX(0%);
+			transform: translateX(0%);
+		}
+		.slider h2, .slider .button {
+			-webkit-transform: translateX(0);
+			transform: translateX(0);
+			opacity: 1;
+			margin-bottom: 30px;
+		}
+
+		a.button.active {
+			background-color: #79cae5;
+		}
+
+		.hidden {
+			display: none;
+		}
+
+		input {
+			height: 30px;
+    	width: 240px;
+			font-size: 18px;
+			margin-bottom: 20px;
+			text-align: center;
+			display: block;
+		}
+
+		select {
+			height: 30px;
+			font-size: 18px;
+		}
+
+		select:focus, input:focus {
+			outline-width: 0;
+		}
+
+		button.login {
+			display: block;
+			margin: auto;
+			margin-top: 30px;
+			height: 50px;
+			width: 90px;
+			font-size: 20px;
+		}
+
+		button.login:hover {
+			cursor: pointer;
+		}
+		
+		@media only screen and (max-width: 767px) {
+			.slider h2 {
+				font-size: 20px;
+			}
+			.slider > div {
+				padding: 0 2%
+			}
+			.control label {
+				font-size: 35px;
+			}
+			.slider .button {
+				padding: 0 15px;
+			}
+		}
