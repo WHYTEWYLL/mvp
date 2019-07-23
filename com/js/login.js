@@ -2,13 +2,15 @@ $(function () {
 
   var template = '<div>\
     <h2>SAIKI</h2>\
-    <input type="email" class="email" placeholder="Email" value="">\
-    <input type="text" class="summoner" placeholder="Summoner">\
-    <select type="text" class="regions"></select>\
-    <button class="login">Start</button>\
+    <input type="email" class="email" placeholder="Email" value="joseba@saiki.io">\
+    <div class="summoner-container hidden">\
+      <input type="text" class="summoner" placeholder="Summoner">\
+      <select type="text" class="regions"></select>\
+    </div>\
+    <button class="login">Crear</button>\
   </div>';
 
-  var validRegions = ['ru', 'kr', 'br1', 'oc1', 'jp1', 'na1', 'eun1', 'euw1', 'tr1', 'la1', 'la2'];
+  var validRegions = ['eun1', 'euw1', 'ru', 'kr', 'br1', 'oc1', 'jp1', 'na1', 'tr1', 'la1', 'la2'];
 
   $.tmpl(template, {}).appendTo('#app-container');
 
@@ -18,23 +20,27 @@ $(function () {
   });
 
   $('button.login').click(function () {
+    $('h2.error').remove();
     if (app.user) {
       return saveSummoner();
     }
     var email = $('input.email').val().trim().toLowerCase();
     if (!email || !app.validEmail(email)) {
-      return;
+      return showError('Email incorrecto');
     }
     app.proxy('POST', '/auth/email-login', {email: email}, loginSuccess, loginError);
   });
   
   var loginError = function (error) {
-    console.log('error login', error);
+    console.log('Login error', error);
+    showError('Error creando el usuario');
   };
 
   var loginSuccess = function (data) {
     app.user = data;
-    saveSummoner();
+    $('input.email').addClass('hidden');
+    $('div.summoner-container').removeClass('hidden');
+    $('button.login').text('Empezar');
   };
 
   var saveSummoner = function () {
@@ -42,14 +48,19 @@ $(function () {
       name: $('input.summoner').val().trim().toLowerCase(),
       region: $('select').val()
     };
-    // if (!data.name || !data.region) {
-    //   return;
-    // }
+    if (!data.name || !data.region) {
+      return showError('Introduce el nombre del summoner');
+    }
     app.proxy('POST', '/riot/summoner/by-name', data, summonerSaved, errorSavingSummoner);
   };
 
   var errorSavingSummoner = function (error) {
     console.log('Error saving summoner', error);
+    showError('Summoner no encontrado');
+  };
+
+  var showError = function (text) {
+    $('#app-container').append('<h2 class="error">' + text + '</h2>');
   };
 
   var summonerSaved = function (summoner) {

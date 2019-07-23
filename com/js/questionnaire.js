@@ -5,7 +5,7 @@ $(function () {
   var position = 0;
   var clicked = false;
 
-  var itemTemplate = '<div>\
+  var itemTemplate = '<div class="item-container">\
     <h2>${question}</h2>\
     <a href="#" class="button vote" data-control="1">1</a>\
     <a href="#" class="button vote" data-control="2">2</a>\
@@ -14,9 +14,10 @@ $(function () {
     <a href="#" class="button vote" data-control="5">5</a>\
   </div>';
 
-  var finishedTemplate = '<div>\
+  var finishedTemplate = '<div class="finished-container">\
     <h2>Hemos terminado!</h2>\
     <h4>Te enviaremos los resultados por email, muchas gracias por participar.</h4>\
+    <button class="finish">Finalizar</button>\
   </div>';
 
   app.loadQuestionnaire = function () {
@@ -42,7 +43,8 @@ $(function () {
   };
 
   var errorSavingQuestionnaire = function (err) {
-    console.log('Error:', err);
+    console.log('Error saving questionnaire:', err);
+    showError('Error descargando el questionario');
   };
 
   var printItem = function () {
@@ -85,6 +87,10 @@ $(function () {
 
   var errorCreatingAnswer = function (err) {
     console.log('Error creating answer:', err);
+    showError('Error guardando tu respuesta, intentalo otra vez');
+    setTimeout(function () {
+      printItem();
+    }, 2000);
   };
 
   var finished = function () {
@@ -92,5 +98,13 @@ $(function () {
     $.tmpl(finishedTemplate, {}).appendTo('#app-container');
     $('#app-container').css('background', '#79cae5');
   };
+
+  var showError = function (text) {
+    $('#app-container').append('<h2 class="error">' + text + '</h2>');
+  };
+
+  $(document).on('click', 'button.finish', function (event) {
+    location.reload();
+  });
 
 });

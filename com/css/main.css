@@ -175,17 +175,42 @@
 			outline-width: 0;
 		}
 
-		button.login {
+		button.login, button.finish {
 			display: block;
 			margin: auto;
 			margin-top: 30px;
 			height: 50px;
-			width: 90px;
+			width: 120px;
 			font-size: 20px;
 		}
 
-		button.login:hover {
+		button.finish {
+			color: #FFF;
+			background-color: #232323;
+			border: none;
+			outline-width: 0;
+		}
+
+		button.login:hover, button.finish:hover {
 			cursor: pointer;
+		}
+
+		h2.error {
+			z-index: 100;
+			position: absolute;
+			color: red;
+			text-align: center;
+			margin-top: 150px;
+			font: 300 20px 'Open Sans', sans-serif;
+		}
+
+		div.item-container {
+			margin: 0px 80px;
+		}
+
+		div.finished-container h4 {
+			color: #FFF;
+			font-size: 20px;
 		}
 		
 		@media only screen and (max-width: 767px) {
