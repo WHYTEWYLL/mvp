@@ -2,7 +2,7 @@ $(function () {
 
   var template = '<div>\
     <h2>SAIKI</h2>\
-    <input type="email" class="email" placeholder="Email" value="joseba@saiki.io">\
+    <input type="email" class="email" placeholder="Email" value="">\
     <div class="summoner-container hidden">\
       <input type="text" class="summoner" placeholder="Summoner">\
       <select type="text" class="regions"></select>\
