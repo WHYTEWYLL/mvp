@@ -1,6 +1,6 @@
 
 var app = {};
-var HOST = 'http://localhost:8080';
+var HOST = 'http://198.199.127.110:8080';
 
 app.proxy = function (type, url, data, onSuccess, onError) {
   var headers = {};
