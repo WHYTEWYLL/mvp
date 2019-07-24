@@ -212,6 +212,11 @@
 			color: #FFF;
 			font-size: 20px;
 		}
+
+		p.subtext {
+			color: #FFF;
+			font-size: 1.2em;
+		}
 		
 		@media only screen and (max-width: 767px) {
 			.slider h2 {

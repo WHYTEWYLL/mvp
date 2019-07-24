@@ -7,11 +7,14 @@ $(function () {
 
   var itemTemplate = '<div class="item-container">\
     <h2>${question}</h2>\
-    <a href="#" class="button vote" data-control="1">1</a>\
-    <a href="#" class="button vote" data-control="2">2</a>\
-    <a href="#" class="button vote" data-control="3">3</a>\
-    <a href="#" class="button vote" data-control="4">4</a>\
-    <a href="#" class="button vote" data-control="5">5</a>\
+    <p class="subtext">¿Estás <b>de acuerdo</b> con esta afirmación?</p>\
+    <span style="font-size: 15px;">👎</span>\
+    <a href="#" class="button vote" data-control="1" style="background-color: #8E0000">1</a>\
+    <a href="#" class="button vote" data-control="2" style="background-color: #B18B00">2</a>\
+    <a href="#" class="button vote" data-control="3" style="background-color: #C1B200">3</a>\
+    <a href="#" class="button vote" data-control="4" style="background-color: #607703">4</a>\
+    <a href="#" class="button vote" data-control="5" style="background-color: green">5</a>\
+    <span style="font-size: 15px;">👍</span>\
   </div>';
 
   var finishedTemplate = '<div class="finished-container">\
