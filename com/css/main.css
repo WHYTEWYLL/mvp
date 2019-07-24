@@ -150,7 +150,7 @@
 		}
 
 		a.button.active {
-			background-color: #79cae5;
+			background-color: #79cae5 !important;
 		}
 
 		.hidden {
